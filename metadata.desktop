@@ -1,0 +1,16 @@
+[SddmGreeterTheme]
+Name=Tidy SDDM
+Description=A tidy theme for SDDM Qt6
+Author=loadfred
+Copyright=(c) 2024, loadfred
+License=GPL-3.0-or-later
+Type=sddm-theme
+Version=0.1
+Website=https://github.com/loadfred/tidy-sddm
+Screenshot=previews/Breeze-Dark.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Theme-Id=tidy-sddm
+Theme-API=6.7
+QtVersion=6
