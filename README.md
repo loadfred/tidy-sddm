@@ -1,5 +1,5 @@
 # Tidy SDDM
-A tidy theme for SDDM Qt6
+A tidy theme for [SDDM](https://github.com/sddm/sddm) Qt6
 
 *Create your own custom color palette or use one of the 20+ palettes included in the theme.conf file*
 
@@ -17,14 +17,19 @@ A tidy theme for SDDM Qt6
 - qt6-svg
 
 ## Install
-Move this entire repository to `/usr/share/sddm/themes/`
+1. Either download and extract the tidy-sddm.tar.xz from the [releases](https://github.com/loadfred/tidy-sddm/releases) or use `git clone`
 
 ```
 git clone https://github.com/loadfred/tidy-sddm
+```
+
+2. Move this entire repository to `/usr/share/sddm/themes/`
+
+```
 sudo mv ./tidy-sddm /usr/share/sddm/themes/
 ```
 
-Create and edit `/etc/sddm.conf` to say ...
+3. Create and edit `/etc/sddm.conf` to say ...
 
 ```
 [Theme]
@@ -35,7 +40,7 @@ Current=tidy-sddm
 If you want a user avatar, copy any image to your home folder and name it `.face.icon`
 
 ## theme.conf
-Everything configurable is listed and explained in `theme.conf`
+Everything configurable is listed and explained in the [`theme.conf`](theme.conf)
 
 ```
 [General]
@@ -67,7 +72,7 @@ There are 20+ different color palettes in the config ready to use
 
 `Palette=Breeze Dark`
 
-You may create your own color palette using Hex codes (#ffa03d)  or color names (orange) with ...
+You may create your own color palette using Hex codes (#ffa03d) or color names (orange) using the following ...
 
 ```
 [Palette Name]
