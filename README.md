@@ -1,7 +1,7 @@
 # Tidy SDDM
 A tidy theme for SDDM Qt6
 
-Create your own custom palette
+*Create your own custom color palette or use one of the 20+ palettes included in the theme.conf file*
 
 ## Previews
 ![Breeze Dark](previews/Breeze-Dark.png)
