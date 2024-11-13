@@ -38,6 +38,7 @@ If you want a user avatar, copy any image to your home folder and name it `.face
 Everything configurable is listed and explained in `theme.conf`
 
 ```
+[General]
 LayoutMirroring=false
 ChooseUser=false
 MilitaryTime=false
