@@ -5,11 +5,10 @@ Create your own custom palette
 
 ## Previews
 ![Breeze Dark](previews/Breeze-Dark.png)
-![Zebra](previews/Zebra.png)
-![Burichan](previews/Burichan.png)
-![Catppuccin Mocha](previews/Catppuccin-Mocha.png)
-![Ambiance](previews/Ambiance.png)
-
+<img src="previews/Zebra.png" width="45%" alt="Zebra"></img>
+<img src="previews/Burichan.png" width="45%" alt="Burichan"></img>
+<img src="previews/Catppuccin-Mocha.png" width="45%" alt="Catppuccin Mocha"></img>
+<img src="previews/Ambiance.png" width="45%" alt="Ambiance"></img>
 
 ## Dependencies
 - sddm
