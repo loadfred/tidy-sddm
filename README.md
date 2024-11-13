@@ -62,7 +62,7 @@ You may choose either adwaita, breeze, or kora
 `Icons=breeze`
 
 ### Palettes
-There are 20 different color palettes in the config ready to use
+There are 20+ different color palettes in the config ready to use
 
 `Palette=Breeze Dark`
 
