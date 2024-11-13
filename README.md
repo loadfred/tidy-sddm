@@ -17,7 +17,7 @@ A tidy theme for [SDDM](https://github.com/sddm/sddm) Qt6
 - qt6-svg
 
 ## Install
-1. Either download and extract the tidy-sddm.tar.xz from the [releases](https://github.com/loadfred/tidy-sddm/releases) or use `git clone`
+1. Either download and extract the tidy-sddm.tar.xz from the [releases](https://github.com/loadfred/tidy-sddm/releases/latest) or use `git clone`
 
 ```
 git clone https://github.com/loadfred/tidy-sddm
