@@ -17,6 +17,7 @@ Pane {
   property int spacingSmall: itemHeight / 3
   property int spacingBig: spacingSmall * 2
   property string backgroundSource: config.stringValue("background")
+  property string backgroundType: config.stringValue("type") // Used by KDE, "image" or "color"
   property string icons: config.stringValue("icons")
   property string paletteChoice: config.stringValue("palette")
 
@@ -93,6 +94,7 @@ Pane {
     Image {
       id: image
       anchors.fill: parent
+      visible: backgroundType != "color"
       clip: true
       focus: true
       smooth: true
@@ -111,7 +113,7 @@ Pane {
   Rectangle {
     // Top half background color
     width: parent.width; height: parent.height / 2 - form.height / 2 + clock.height / 2
-    visible: backgroundImage.status != 1 && !disableTopHalfColor
+    visible: (backgroundImage.status != 1 || backgroundType === "color") && !disableTopHalfColor
     color: palette.base
   }
 
