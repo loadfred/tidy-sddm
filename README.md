@@ -72,7 +72,7 @@ There are 20+ different color palettes in the config ready to use
 
 `Palette=Breeze Dark`
 
-You may create your own color palette using Hex codes (#ffa03d) or color names (orange) using the following ...
+You may create your own color palette using Hex codes (#ffa03d) or color names (orange) using the following properties ...
 
 ```
 [Palette Name]
@@ -86,3 +86,31 @@ WindowText=
 ```
 
 The majority of the palettes written in `theme.conf` are from [lxqt-themes](https://github.com/lxqt/lxqt-themes/tree/master/palettes)
+
+#### Palette groups
+You may create a group within a palette for an easy color change on a specific property or multiple properties
+
+The group name is written before the property with a `/` seperating them: `Red Group/Base=#f00`
+
+The palette's group can be chosen with `Palette=Palette Name/Red Group`
+
+Here's an example ...
+```
+[Gruvbox Dark]
+Base=#282828
+### Default highlight
+Highlight=#928374
+### Various highlight colors, chosen with "Palette=Gruvbox Dark/yellow"
+red/Highlight=#fb4934
+yellow/Highlight=#fabd2f
+green/Highlight=#b8bb26
+aqua/Highlight=#8ec07c
+blue/Highlight=#83a598
+purple/Highlight=#d3869b
+HighlightedText=#1d2021
+Shadow=black
+Text=#d5c4a1
+Window=#3c3836
+WindowText=#ebdbb2
+```
+The palette above can be chosen with either `Palette=Gruvbox Dark`, `Palette=Gruvbox Dark/yellow`, `Palette=Gruvbox Dark/purple`, etc.
