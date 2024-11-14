@@ -48,49 +48,51 @@ Everything configurable is listed and explained in the [`theme.conf`](theme.conf
 
 ```
 [General]
-LayoutMirroring=false
-ChooseUser=false
-MilitaryTime=false
-DisableTopHalfColor=false
-FontPointSize=11
-FontFamily=Inter
-Background=
-Icons=kora
-Palette=Blender
+layoutMirroring=false
+chooseUser=false
+militaryTime=false
+disableTopHalfColor=false
+fontPointSize=11
+fontFamily=Inter
+background=
+icons=kora
+palette=Blender
 ```
 
 ### Background
-For a background image, enter the full path
+For a background image, you may select it from the KDE system settings (sddm-kcm), otherwise enter the path ...
 
-`Background=/home/myuser/Pictures/greenforest.png`
+`background=trees.png` if image is in the tidy-sddm folder (preferred)
 
-Otherwise the base and window colors from your chosen palette will be used for the background
+`background=/home/myuser/Pictures/greenforest.png` see the note below
 
 NOTE: If no image is shown, SDDM needs permission to open your home folder, this can be done with ...
 
 `sudo chmod o+X /home/myuser`
 
+If no background is defined the base and window colors from your chosen palette will be used for the background
+
 ### Icons
 You may choose either adwaita, breeze, or kora
 
-`Icons=breeze`
+`icons=breeze`
 
 ### Palettes
 There are 20+ different color palettes in the config ready to use
 
-`Palette=Breeze Dark`
+`palette=Breeze Dark`
 
 You may create your own color palette using Hex codes (#ffa03d) or color names (orange) using the following properties ...
 
 ```
 [Palette Name]
-Base=
-Highlight=
-HighlightedText=
-Shadow=
-Text=
-Window=
-WindowText=
+base=
+highlight=
+highlightedText=
+shadow=
+text=
+window=
+windowText=
 ```
 
 The majority of the palettes written in `theme.conf` are from [lxqt-themes](https://github.com/lxqt/lxqt-themes/tree/master/palettes)
@@ -98,27 +100,27 @@ The majority of the palettes written in `theme.conf` are from [lxqt-themes](http
 #### Palette groups
 You may create a group within a palette for an easy color change on a specific property or multiple properties
 
-The group name is written before the property with a `/` seperating them: `Red Group/Base=#f00`
+The group name is written before the property with a `/` seperating them: `Red Group/base=#f00`
 
-The palette's group can be chosen with `Palette=Palette Name/Red Group`
+The palette's group can be chosen with `palette=Palette Name/Red Group`
 
 Here's an example ...
 ```
 [Gruvbox Dark]
-Base=#282828
+base=#282828
 ### Default highlight
-Highlight=#928374
-### Various highlight colors, chosen with "Palette=Gruvbox Dark/yellow"
-red/Highlight=#fb4934
-yellow/Highlight=#fabd2f
-green/Highlight=#b8bb26
-aqua/Highlight=#8ec07c
-blue/Highlight=#83a598
-purple/Highlight=#d3869b
-HighlightedText=#1d2021
-Shadow=black
-Text=#d5c4a1
-Window=#3c3836
-WindowText=#ebdbb2
+highlight=#928374
+### Various highlight colors, chosen with "palette=Gruvbox Dark/yellow"
+red/highlight=#fb4934
+yellow/highlight=#fabd2f
+green/highlight=#b8bb26
+aqua/highlight=#8ec07c
+blue/highlight=#83a598
+purple/highlight=#d3869b
+highlightedText=#1d2021
+shadow=black
+text=#d5c4a1
+window=#3c3836
+windowText=#ebdbb2
 ```
-The palette above can be chosen with either `Palette=Gruvbox Dark`, `Palette=Gruvbox Dark/yellow`, `Palette=Gruvbox Dark/purple`, etc.
+The palette above can be chosen with either `palette=Gruvbox Dark`, `palette=Gruvbox Dark/yellow`, `palette=Gruvbox Dark/purple`, etc.

@@ -6,43 +6,43 @@ Pane {
   id: root
   padding: 0
 
-  LayoutMirroring.enabled: config.boolValue("LayoutMirroring") || Qt.locale().textDirection == Qt.RightToLeft
+  LayoutMirroring.enabled: config.boolValue("layoutMirroring") || Qt.locale().textDirection == Qt.RightToLeft
   LayoutMirroring.childrenInherit: true
 
-  property bool chooseUser: config.boolValue("ChooseUser") || false
-  property bool militaryTime: config.boolValue("MilitaryTime") || false
-  property bool disableTopHalfColor: config.boolValue("DisableTopHalfColor") || false
+  property bool chooseUser: config.boolValue("chooseUser") || false
+  property bool militaryTime: config.boolValue("militaryTime") || false
+  property bool disableTopHalfColor: config.boolValue("disableTopHalfColor") || false
   property int itemWidth: itemHeight * 10
   property int itemHeight: font.pointSize * 5 / 2
   property int spacingSmall: itemHeight / 3
   property int spacingBig: spacingSmall * 2
-  property string backgroundSource: config.stringValue("Background")
-  property string icons: config.stringValue("Icons")
-  property string paletteChoice: config.stringValue("Palette")
+  property string backgroundSource: config.stringValue("background")
+  property string icons: config.stringValue("icons")
+  property string paletteChoice: config.stringValue("palette")
 
   property string pOrigin: paletteChoice.split("/")[0]
 
   property string pBase:
-    config.stringValue(paletteChoice + "/Base") ||
-    config.stringValue(pOrigin + "/Base")
+    config.stringValue(paletteChoice + "/base") ||
+    config.stringValue(pOrigin + "/base")
   property string pHighlight:
-    config.stringValue(paletteChoice + "/Highlight") ||
-    config.stringValue(pOrigin + "/Highlight")
+    config.stringValue(paletteChoice + "/highlight") ||
+    config.stringValue(pOrigin + "/highlight")
   property string pHighlightedText:
-    config.stringValue(paletteChoice + "/HighlightedText") ||
-    config.stringValue(pOrigin + "/HighlightedText")
+    config.stringValue(paletteChoice + "/highlightedText") ||
+    config.stringValue(pOrigin + "/highlightedText")
   property string pShadow:
-    config.stringValue(paletteChoice + "/Shadow") ||
-    config.stringValue(pOrigin + "/Shadow")
+    config.stringValue(paletteChoice + "/shadow") ||
+    config.stringValue(pOrigin + "/shadow")
   property string pText:
-    config.stringValue(paletteChoice + "/Text") ||
-    config.stringValue(pOrigin + "/Text")
+    config.stringValue(paletteChoice + "/text") ||
+    config.stringValue(pOrigin + "/text")
   property string pWindow:
-    config.stringValue(paletteChoice + "/Window") ||
-    config.stringValue(pOrigin + "/Window")
+    config.stringValue(paletteChoice + "/window") ||
+    config.stringValue(pOrigin + "/window")
   property string pWindowText:
-    config.stringValue(paletteChoice + "/WindowText") ||
-    config.stringValue(pOrigin + "/WindowText")
+    config.stringValue(paletteChoice + "/windowText") ||
+    config.stringValue(pOrigin + "/windowText")
 
   palette {
     base: pBase || undefined
@@ -62,8 +62,8 @@ Pane {
   }
 
   font {
-    pointSize: parseFloat(config.stringValue("FontPointSize")) || 12
-    family: config.stringValue("FontFamily") || "sans"
+    pointSize: parseFloat(config.stringValue("fontPointSize")) || 12
+    family: config.stringValue("fontFamily") || "sans"
   }
 
   Connections {
