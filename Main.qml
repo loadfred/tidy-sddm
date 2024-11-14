@@ -3,6 +3,9 @@ import QtQuick.Controls.Fusion 6.7
 import QtQuick.Effects 6.7
 
 Pane {
+  id: root
+  padding: 0
+
   LayoutMirroring.enabled: config.boolValue("LayoutMirroring") || Qt.locale().textDirection == Qt.RightToLeft
   LayoutMirroring.childrenInherit: true
 
@@ -10,41 +13,58 @@ Pane {
   property bool militaryTime: config.boolValue("MilitaryTime") || false
   property bool disableTopHalfColor: config.boolValue("DisableTopHalfColor") || false
   property int itemWidth: itemHeight * 10
-  property int itemHeight: fontPointSize * 5 / 2
+  property int itemHeight: font.pointSize * 5 / 2
   property int spacingSmall: itemHeight / 3
   property int spacingBig: spacingSmall * 2
-  property int fontPointSize: config.intValue("FontPointSize") || Qt.application.font.pointSize
-  property string fontFamily: config.stringValue("FontFamily") || Qt.application.font.family
   property string backgroundSource: config.stringValue("Background")
   property string icons: config.stringValue("Icons")
   property string paletteChoice: config.stringValue("Palette")
 
-  property color pBase: config.stringValue(paletteChoice + "/Base") || Qt.application.palette.base
-  property color pHighlight: config.stringValue(paletteChoice + "/Highlight") || Qt.application.palette.highlight
-  property color pHighlightedText: config.stringValue(paletteChoice + "/HighlightedText") || Qt.application.palette.highlightedText
-  property color pShadow: config.stringValue(paletteChoice + "/Shadow") || Qt.application.palette.shadow
-  property color pText: config.stringValue(paletteChoice + "/Text") || Qt.application.palette.text
-  property color pWindow: config.stringValue(paletteChoice + "/Window") || Qt.application.palette.window
-  property color pWindowText: config.stringValue(paletteChoice + "/WindowText") || Qt.application.palette.windowText
+  property string pOrigin: paletteChoice.split("/")[0]
+
+  property string pBase:
+    config.stringValue(paletteChoice + "/Base") ||
+    config.stringValue(pOrigin + "/Base")
+  property string pHighlight:
+    config.stringValue(paletteChoice + "/Highlight") ||
+    config.stringValue(pOrigin + "/Highlight")
+  property string pHighlightedText:
+    config.stringValue(paletteChoice + "/HighlightedText") ||
+    config.stringValue(pOrigin + "/HighlightedText")
+  property string pShadow:
+    config.stringValue(paletteChoice + "/Shadow") ||
+    config.stringValue(pOrigin + "/Shadow")
+  property string pText:
+    config.stringValue(paletteChoice + "/Text") ||
+    config.stringValue(pOrigin + "/Text")
+  property string pWindow:
+    config.stringValue(paletteChoice + "/Window") ||
+    config.stringValue(pOrigin + "/Window")
+  property string pWindowText:
+    config.stringValue(paletteChoice + "/WindowText") ||
+    config.stringValue(pOrigin + "/WindowText")
 
   palette {
-    base: pBase
-    highlight: pHighlight
-    highlightedText: pHighlightedText
-    shadow: pShadow
-    text: pText
-    window: pWindow
-    windowText: pWindowText
-    button: pWindow
-    buttonText: pWindowText
-    toolTipBase: pBase
-    toolTipText: pText
-    placeholderText: Qt.rgba(pText.r, pText.g, pText.b, 0.5)
+    base: pBase || undefined
+    highlight: pHighlight || undefined
+    highlightedText: pHighlightedText || undefined
+    shadow: pShadow || undefined
+    text: pText || undefined
+    window: pWindow || undefined
+    windowText: pWindowText || undefined
+    button: pWindow || undefined
+    buttonText: pWindowText || undefined
+    toolTipBase: pBase || undefined
+    toolTipText: pText || undefined
+
+    property color pTextColor: pText
+    placeholderText: pText ? Qt.rgba(pTextColor.r, pTextColor.g, pTextColor.b, 0.5) : undefined
   }
 
-  font.pointSize: fontPointSize
-  font.family: fontFamily
-  padding: 0
+  font {
+    pointSize: parseFloat(config.stringValue("FontPointSize")) || 12
+    family: config.stringValue("FontFamily") || "sans"
+  }
 
   Connections {
     target: sddm
@@ -135,18 +155,17 @@ Pane {
           Text {
             anchors.left: parent.left
             anchors.leftMargin: parent.padding
-            font.pointSize: fontPointSize * 2
-            font.family: fontFamily
-            color: disableTopHalfColor ? palette.windowText : palette.text
+            font.pointSize: root.font.pointSize * 2
+            font.family: root.font.family
             font.weight: 900
+            color: disableTopHalfColor ? palette.windowText : palette.text
             text: Qt.formatTime(parent.dateTime, "h:mm" + (militaryTime ? "" : " a"))
           }
 
           Text {
             anchors.left: parent.left
             anchors.leftMargin: parent.padding
-            font.pointSize: fontPointSize
-            font.family: fontFamily
+            font: root.font
             color: disableTopHalfColor ? palette.windowText : palette.text
             text: Qt.formatDate(parent.dateTime, "dddd, MMMM d")
           }
@@ -200,8 +219,7 @@ Pane {
 
               ToolTip {
                 visible: parent.hovered
-                font.pointSize: fontPointSize
-                font.family: fontFamily
+                font: root.font
                 palette: parent.palette
                 delay: 1000
                 timeout: 5000
@@ -225,8 +243,7 @@ Pane {
 
               ToolTip {
                 visible: parent.hovered
-                font.pointSize: fontPointSize
-                font.family: fontFamily
+                font: root.font
                 palette: parent.palette
                 delay: 1000
                 timeout: 5000
@@ -250,8 +267,7 @@ Pane {
 
               ToolTip {
                 visible: parent.hovered
-                font.pointSize: fontPointSize
-                font.family: fontFamily
+                font: root.font
                 palette: parent.palette
                 delay: 1000
                 timeout: 5000
@@ -280,14 +296,12 @@ Pane {
             model: sessionModel
             currentIndex: sessionModel.lastIndex
             textRole: "name"
-            popup.font.pointSize: fontPointSize
-            popup.font.family: fontFamily
-            palette.window: pBase
+            popup.font: root.font
+            palette.window: root.palette.base
 
             ToolTip {
               visible: parent.hovered
-              font.pointSize: fontPointSize
-              font.family: fontFamily
+              font: root.font
               palette: parent.palette
               delay: 1000
               timeout: 5000
@@ -309,14 +323,12 @@ Pane {
             model: userModel
             currentIndex: userModel.lastIndex
             textRole: "name"
-            popup.font.pointSize: fontPointSize
-            popup.font.family: fontFamily
-            palette.window: pBase
+            popup.font: root.font
+            palette.window: root.palette.base
 
             ToolTip {
               visible: parent.hovered
-              font.pointSize: fontPointSize
-              font.family: fontFamily
+              font: root.font
               palette: parent.palette
               delay: 1000
               timeout: 5000
@@ -344,8 +356,7 @@ Pane {
             ToolTip {
               id: swap_button_tooltip
               visible: parent.hovered
-              font.pointSize: fontPointSize
-              font.family: fontFamily
+              font: root.font
               palette: parent.palette
               delay: 1000
               timeout: 5000
@@ -383,8 +394,7 @@ Pane {
             TextField {
               id: pw_entry
               width: itemWidth - itemHeight -parent.spacing; height: itemHeight
-              font.pointSize: fontPointSize
-              font.family: fontFamily
+              font: root.font
               placeholderText: qsTr("Password")
               color: enabled ? palette.text : Qt.rgba(palette.text.r, palette.text.g, palette.text.b, 0.5)
 
@@ -414,8 +424,7 @@ Pane {
 
               ToolTip {
                 visible: parent.hovered
-                font.pointSize: fontPointSize
-                font.family: fontFamily
+                font: root.font
                 palette: parent.palette
                 delay: 1000
                 timeout: 5000
@@ -460,8 +469,7 @@ Pane {
 
               Text {
                 anchors.verticalCenter: pw_reveal.verticalCenter
-                font.pointSize: fontPointSize
-                font.family: fontFamily
+                font: root.font
                 color: palette.windowText
                 text: qsTr("Show password")
               }
