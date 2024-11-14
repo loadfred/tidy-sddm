@@ -16,7 +16,7 @@ A tidy theme for [SDDM](https://github.com/sddm/sddm) Qt6
 - qt6-declarative (Qt Quick)
 - qt6-svg
 
-## Install
+## Manually install
 1. Either download and extract the tidy-sddm.tar.xz from the [releases](https://github.com/loadfred/tidy-sddm/releases/latest) or use `git clone`
 
 ```
@@ -62,9 +62,9 @@ palette=Blender
 ### Background
 For a background image, you may select it from the KDE system settings (sddm-kcm), otherwise enter the path ...
 
-`background=trees.png` if image is in the tidy-sddm folder (preferred)
+`background=trees.png` - if image is in the tidy-sddm folder (preferred)
 
-`background=/home/myuser/Pictures/greenforest.png` see the note below
+`background=/home/myuser/Pictures/greenforest.png` - see the note below
 
 NOTE: If no image is shown, SDDM needs permission to open your home folder, this can be done with ...
 
