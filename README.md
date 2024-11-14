@@ -39,6 +39,8 @@ Current=tidy-sddm
 ## .face.icon
 If you want a user avatar, copy any image to your home folder and name it `.face.icon`
 
+NOTE: If no image is shown, SDDM needs permission to open your home folder, this can be done with `sudo chmod o+X /home/myuser`
+
 ## theme.conf
 Everything configurable is listed and explained in the [`theme.conf`](theme.conf)
 
@@ -61,6 +63,8 @@ For a background image, enter the full path
 `Background=/home/myuser/Pictures/greenforest.png`
 
 Otherwise the base and window colors from your chosen palette will be used for the background
+
+NOTE: If no image is shown, SDDM needs permission to open your home folder, this can be done with `sudo chmod o+X /home/myuser`
 
 ### Icons
 You may choose either adwaita, breeze, or kora
