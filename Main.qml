@@ -482,5 +482,11 @@ Pane {
 
   Component.onCompleted: {
     pw_entry.forceActiveFocus()
+
+    // Disable virtual keyboard
+    Qt.inputMethod.visibleChanged.connect(function () {
+        if (Qt.inputMethod.visible)
+            Qt.inputMethod.hide()
+    })
   }
 }
